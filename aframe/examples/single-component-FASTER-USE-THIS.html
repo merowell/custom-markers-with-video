@@ -20,6 +20,7 @@ https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoe
 <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script> <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.0/aframe/build/aframe-ar.js"></script> 
 <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v4.1.2/dist/aframe-extras.min.js"></script> 
 <script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script> 
+ <script src="https://unpkg.com/aframe-text-geometry-component@^0.5.0/dist/aframe-text-geometry-component.min.js"></script>
 
  <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
@@ -56,9 +57,6 @@ AFRAME.registerComponent('vidhandler', {
 });
 </script>
 
-
-
-
 <a-scene embedded arjs>
 
 	<!-- assets for vidhandler -->
@@ -69,10 +67,19 @@ AFRAME.registerComponent('vidhandler', {
          <video crossOrigin="Anonymous" Id="videonew" preload="auto" loop="true" src="assets\textures\VideoNew.mp4">
            </video>
           <!-- FOR NOTMAL VIDEO YOU CAN USE MP4 or WEBM BUT FOR ALPHA VIDEO YOU NEED TO USE .WEBM FORMAT-->
+          <a-asset-item id="optimerBoldFont" src="https://rawgit.com/mrdoob/three.js/dev/examples/fonts/optimer_bold.typeface.json"></a-asset-item>
     </a-assets>
 
 
-<!-- marker1: kanji -->
+
+
+
+
+
+
+
+
+	<!-- marker1: kanji -->
     <a-marker preset='kanji' vidhandler="target: #vid, #videonew">
          <!-- add transparent video (.webm) -->
         <a-plane  position='0 .3 0' width='3' height='2' rotation="-90 0 0" material='transparent:true;alphaTest:0;src:#vid'></a-plane>
@@ -82,21 +89,24 @@ AFRAME.registerComponent('vidhandler', {
    
         <!-- add .obj model-->
         <a-entity 
-                obj-model= 'obj: url(https://raw.githubusercontent.com/merowell/custom-markers-with-video/master/aframe/examples/assets/3d%20models/hollywood-star/hollywood-star.obj); 
-        mtl: url(https://raw.githubusercontent.com/merowell/custom-markers-with-video/master/aframe/examples/assets/3d%20models/hollywood-star/hollywood-star.mtl)' scale="0.3 0.3 0.3" position='0.0 .4 0' rotation='0 0 180'>
+        obj-model= 'obj: url(https://raw.githubusercontent.com/merowell/custom-markers-with-video/master/aframe/examples/assets/3d%20models/hollywood-star/hollywood-star.obj); 
+        mtl: url(https://raw.githubusercontent.com/merowell/custom-markers-with-video/master/aframe/examples/assets/3d%20models/hollywood-star/hollywood-star.mtl)' scale="0.3 0.3 0.3" position='0.0 .5 0' rotation='0 0 180'>
         </a-entity>
         <a-entity 
         obj-model= 'obj: url(https://raw.githubusercontent.com/merowell/custom-markers-with-video/master/aframe/examples/assets/3d%20models/circle/circle.obj); 
-        mtl: url(https://raw.githubusercontent.com/merowell/custom-markers-with-video/master/aframe/examples/assets/3d%20models/circle/circle.mtl)' scale="0.1 0.1 0.1" position='0.0 .4 0'>
+        mtl: url(https://raw.githubusercontent.com/merowell/custom-markers-with-video/master/aframe/examples/assets/3d%20models/circle/circle.mtl)' scale="0.1 0.1 0.1" position='0.0 .5 0'>
         </a-entity>
 
-        <!-- *square model*
-        <a-entity 
-                obj-model= 'obj: url(https://raw.githubusercontent.com/merowell/custom-markers-with-video/master/aframe/examples/assets/3d%20models/square/square.obj); 
-        mtl: url(https://raw.githubusercontent.com/merowell/custom-markers-with-video/master/aframe/examples/assets/3d%20models/square/square.mtl)' scale="0.3 0.3 0.3" position='0.0 0 0' rotation='0 0 0'>
-        </a-entity>
-        -->
+		<!-- add 3d text -->
+		<a-entity text-geometry="value: Golden" position='0.0 .6 0' rotation='270 90 270' material="color: yellow"></a-entity>
+    	<a-entity text-geometry="value: Winner; font: #optimerBoldFont" position='0.0 .6 .5' rotation='270 90 270' material="color: gray"></a-entity>
     </a-marker>
+
+
+
+
+
+
 
 
 
@@ -111,29 +121,33 @@ AFRAME.registerComponent('vidhandler', {
    
         <!-- add .obj model-->
         <a-entity 
-         obj-model= 'obj: url(https://raw.githubusercontent.com/merowell/custom-markers-with-video/master/aframe/examples/assets/3d%20models/hollywood-star/hollywood-star.obj); 
-         mtl: url(https://raw.githubusercontent.com/merowell/custom-markers-with-video/master/aframe/examples/assets/3d%20models/hollywood-star/hollywood-star.mtl)' scale="0.3 0.3 0.3" position='0.0 .4 0' rotation='0 0 180'>
+        obj-model= 'obj: url(https://raw.githubusercontent.com/merowell/custom-markers-with-video/master/aframe/examples/assets/3d%20models/hollywood-star/hollywood-star.obj); 
+        mtl: url(https://raw.githubusercontent.com/merowell/custom-markers-with-video/master/aframe/examples/assets/3d%20models/hollywood-star/hollywood-star.mtl)' scale="0.3 0.3 0.3" position='0.0 .5 0' rotation='0 0 180'>
         </a-entity>
         <a-entity 
-                obj-model= 'obj: url(https://raw.githubusercontent.com/merowell/custom-markers-with-video/master/aframe/examples/assets/3d%20models/circle/circle.obj); 
-        mtl: url(https://raw.githubusercontent.com/merowell/custom-markers-with-video/master/aframe/examples/assets/3d%20models/circle/circle.mtl)' scale="0.1 0.1 0.1" position='0.0 .4 0'>
+        obj-model= 'obj: url(https://raw.githubusercontent.com/merowell/custom-markers-with-video/master/aframe/examples/assets/3d%20models/circle/circle.obj); 
+        mtl: url(https://raw.githubusercontent.com/merowell/custom-markers-with-video/master/aframe/examples/assets/3d%20models/circle/circle.mtl)' scale="0.1 0.1 0.1" position='0.0 .5 0'>
         </a-entity>
 
-        <!-- *square model*
-        <a-entity 
-                obj-model= 'obj: url(https://raw.githubusercontent.com/merowell/custom-markers-with-video/master/aframe/examples/assets/3d%20models/square/square.obj); 
-        mtl: url(https://raw.githubusercontent.com/merowell/custom-markers-with-video/master/aframe/examples/assets/3d%20models/square/square.mtl)' scale="0.3 0.3 0.3" position='0.0 0 0' rotation='0 0 0'>
-        </a-entity>
-        -->
+		<!-- add 3d text -->
+		<a-entity text-geometry="value: Golden" position='0.0 .6 0' rotation='270 90 270' material="color: yellow"></a-entity>
+    	<a-entity text-geometry="value: Winner; font: #optimerBoldFont" position='0.0 .6 .5' rotation='270 90 270' material="color: gray"></a-entity>
     </a-marker>
 
 
 
 
-   
+
+
+
+
+
+
     <!-- marker3: hollywood star 1 -->
-    <a-marker  vidhandler="target: #vid, #videonew" type='pattern' url='https://raw.githubusercontent.com/merowell/custom-markers-with-video/master/aframe/examples/assets/hollywood-stars/patt/pattern-hollywood-star1.patt'>
-    <!-- add transparent video (.webm) -->
+    <a-marker  
+    	vidhandler="target: #vid, #videonew" type='pattern' url='https://raw.githubusercontent.com/merowell/custom-markers-with-video/master/aframe/examples/assets/hollywood-stars/patt/pattern-hollywood-star1.patt'>
+    
+        <!-- add transparent video (.webm) -->
         <a-plane  position='0 .3 0' width='3' height='2' rotation="-90 0 0" material='transparent:true;alphaTest:0;src:#vid'></a-plane>
 
         <!-- add non transparent video (.mp4) -->
@@ -142,49 +156,58 @@ AFRAME.registerComponent('vidhandler', {
         <!-- add .obj model-->
         <a-entity 
         obj-model= 'obj: url(https://raw.githubusercontent.com/merowell/custom-markers-with-video/master/aframe/examples/assets/3d%20models/hollywood-star/hollywood-star.obj); 
-        mtl: url(https://raw.githubusercontent.com/merowell/custom-markers-with-video/master/aframe/examples/assets/3d%20models/hollywood-star/hollywood-star.mtl)' scale="0.3 0.3 0.3" position='0.0 .4 0' rotation='0 0 180'>
+        mtl: url(https://raw.githubusercontent.com/merowell/custom-markers-with-video/master/aframe/examples/assets/3d%20models/hollywood-star/hollywood-star.mtl)' scale="0.3 0.3 0.3" position='0.0 .5 0' rotation='0 0 180'>
         </a-entity>
         <a-entity 
-                obj-model= 'obj: url(https://raw.githubusercontent.com/merowell/custom-markers-with-video/master/aframe/examples/assets/3d%20models/circle/circle.obj); 
-        mtl: url(https://raw.githubusercontent.com/merowell/custom-markers-with-video/master/aframe/examples/assets/3d%20models/circle/circle.mtl)' scale="0.1 0.1 0.1" position='0.0 .4 0'>
+        obj-model= 'obj: url(https://raw.githubusercontent.com/merowell/custom-markers-with-video/master/aframe/examples/assets/3d%20models/circle/circle.obj); 
+        mtl: url(https://raw.githubusercontent.com/merowell/custom-markers-with-video/master/aframe/examples/assets/3d%20models/circle/circle.mtl)' scale="0.1 0.1 0.1" position='0.0 .5 0'>
         </a-entity>
 
-        <!-- *square model*
-        <a-entity 
-                obj-model= 'obj: url(https://raw.githubusercontent.com/merowell/custom-markers-with-video/master/aframe/examples/assets/3d%20models/square/square.obj); 
-        mtl: url(https://raw.githubusercontent.com/merowell/custom-markers-with-video/master/aframe/examples/assets/3d%20models/square/square.mtl)' scale="0.3 0.3 0.3" position='0.0 0 0' rotation='0 0 0'>
-        </a-entity>
-        -->
-       
+        <!-- add 3d text -->
+		<a-entity text-geometry="value: Golden" position='0.0 .6 0' rotation='270 90 270' material="color: yellow"></a-entity>
+    	<a-entity text-geometry="value: Winner; font: #optimerBoldFont" position='0.0 .6 .5' rotation='270 90 270' material="color: gray"></a-entity>
     </a-marker>
 
 
-    <!-- marker4: CEV -->
-    <a-marker  vidhandler="target: #vid, #videonew" type='pattern' url='https://raw.githubusercontent.com/merowell/custom-markers-with-video/master/aframe/examples/assets/pattern-cev%20(10).patt'>
-    <!-- add transparent video (.webm) -->
+
+
+
+
+
+
+
+
+    	<!-- marker4: CEV -->
+    	<a-marker  vidhandler="target: #vid, #videonew" type='pattern' url='https://raw.githubusercontent.com/merowell/custom-markers-with-video/master/aframe/examples/assets/pattern-cev%20(10).patt'>
+
+    	<!-- add transparent video (.webm) -->
         <a-plane  position='0 .3 0' width='3' height='2' rotation="-90 0 0" material='transparent:true;alphaTest:0;src:#vid'></a-plane>
 
-    <!-- add non transparent video (.mp4) -->
+        <!-- add non transparent video (.mp4) -->
         <a-plane  position='0 .2 0' width='1.5' height='1.5' rotation="-90 0 0" material='src:#videonew'></a-plane>
    
-    <!-- add .obj model-->
+        <!-- add .obj model-->
         <a-entity 
         obj-model= 'obj: url(https://raw.githubusercontent.com/merowell/custom-markers-with-video/master/aframe/examples/assets/3d%20models/hollywood-star/hollywood-star.obj); 
-        mtl: url(https://raw.githubusercontent.com/merowell/custom-markers-with-video/master/aframe/examples/assets/3d%20models/hollywood-star/hollywood-star.mtl)' scale="0.3 0.3 0.3" position='0.0 .4 0' rotation='0 0 180'>
+        mtl: url(https://raw.githubusercontent.com/merowell/custom-markers-with-video/master/aframe/examples/assets/3d%20models/hollywood-star/hollywood-star.mtl)' scale="0.3 0.3 0.3" position='0.0 .5 0' rotation='0 0 180'>
         </a-entity>
         <a-entity 
-                obj-model= 'obj: url(https://raw.githubusercontent.com/merowell/custom-markers-with-video/master/aframe/examples/assets/3d%20models/circle/circle.obj); 
-        mtl: url(https://raw.githubusercontent.com/merowell/custom-markers-with-video/master/aframe/examples/assets/3d%20models/circle/circle.mtl)' scale="0.1 0.1 0.1" position='0.0 .4 0'>
+        obj-model= 'obj: url(https://raw.githubusercontent.com/merowell/custom-markers-with-video/master/aframe/examples/assets/3d%20models/circle/circle.obj); 
+        mtl: url(https://raw.githubusercontent.com/merowell/custom-markers-with-video/master/aframe/examples/assets/3d%20models/circle/circle.mtl)' scale="0.1 0.1 0.1" position='0.0 .5 0'>
         </a-entity>
 
-        <!-- *square model*
-        <a-entity 
-                obj-model= 'obj: url(https://raw.githubusercontent.com/merowell/custom-markers-with-video/master/aframe/examples/assets/3d%20models/square/square.obj); 
-        mtl: url(https://raw.githubusercontent.com/merowell/custom-markers-with-video/master/aframe/examples/assets/3d%20models/square/square.mtl)' scale="0.3 0.3 0.3" position='0.0 0 0' rotation='0 0 0'>
-        </a-entity>
-        -->
+		<!-- add 3d text -->
+		<a-entity text-geometry="value: Golden" position='0.0 .6 0' rotation='270 90 270' material="color: yellow"></a-entity>
+    	<a-entity text-geometry="value: Winner; font: #optimerBoldFont" position='0.0 .6 .5' rotation='270 90 270' material="color: gray"></a-entity>
     </a-marker>
  
+
+
+
+
+
+
+
 
 
 	<!-- add a simple camera -->
